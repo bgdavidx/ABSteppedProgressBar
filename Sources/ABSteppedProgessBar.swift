@@ -213,6 +213,15 @@ import CoreGraphics
     self.init(frame:CGRectZero)
   }
   
+  public func setCurrentIndex(index: Int, animated: Bool) {
+    currentIndex = index
+    
+    if !animated {
+      animationRendering = false
+      setNeedsDisplay()
+    }
+  }
+  
   func commonInit() {
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ABSteppedProgressBar.gestureAction(_:)))
     let swipeGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ABSteppedProgressBar.gestureAction(_:)))
